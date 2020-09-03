@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function App() {
   const inputPlaceholder = {
@@ -6,14 +6,11 @@ function App() {
   };
   const [config, setConfig] = useState({});
 
-  var bufferText = {};
+  const inputForm = useRef(null);
 
-  const handleConfigInput = (e) => {
-    bufferText = JSON.parse(e.target.value);
-  };
   const handleApplyClick = () => {
-    setConfig(bufferText);
-    console.log(config);
+    const form = inputForm.current;
+    setConfig(form["configInput"].value);
   };
 
   const renderFromConfig = () =>
@@ -25,13 +22,14 @@ function App() {
 
   return (
     <div className="App" style={{ margin: "20px 50px" }}>
-      <input
-        type="textArea"
-        style={{ width: "200px", height: "200px" }}
-        placeholder={JSON.stringify(inputPlaceholder)}
-        onChange={handleConfigInput}
-        wrap="hard"
-      />
+      <form ref={inputForm}>
+        <input
+          type="textArea"
+          name="configInput"
+          style={{ width: "200px", height: "200px" }}
+          placeholder={JSON.stringify(inputPlaceholder)}
+        />
+      </form>
       <button onClick={handleApplyClick}>APPLY</button>
       {renderFromConfig()}
     </div>
