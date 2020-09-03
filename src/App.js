@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function App() {
-  const [config, setConfig] = useState({
-    items: [
-      { label: "number", type: "number" },
-      { label: "radio", type: "radio" },
-      { label: "text", type: "text" },
-      { label: "date", type: "date" },
-    ],
-  });
+  const inputPlaceholder = {
+    items: [],
+  };
+  const [config, setConfig] = useState({});
 
   var bufferText = {};
 
   const handleConfigInput = (e) => {
-    bufferText = e.target.value;
+    bufferText = JSON.parse(e.target.value);
   };
   const handleApplyClick = () => {
     setConfig(bufferText);
+    console.log(config);
   };
 
   const renderFromConfig = () =>
@@ -31,7 +28,9 @@ function App() {
       <input
         type="textArea"
         style={{ width: "200px", height: "200px" }}
+        placeholder={JSON.stringify(inputPlaceholder)}
         onChange={handleConfigInput}
+        wrap="hard"
       />
       <button onClick={handleApplyClick}>APPLY</button>
       {renderFromConfig()}
