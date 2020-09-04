@@ -1,37 +1,56 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import RJSON from "relaxed-json";
 
 function App() {
-  const inputPlaceholder = {
-    items: [],
+  const handyString = {
+    items: [
+      { label: "date", type: "date" },
+      { label: "number", type: "number" },
+      { label: "text", type: "textArea" },
+      { label: "textArea", type: "text" },
+      { label: "radio", type: "radio" },
+      { label: "checkbox", type: "checkbox" },
+    ],
   };
-  const [config, setConfig] = useState({});
 
-  const inputForm = useRef(null);
+  const [config, setConfig] = useState({});
+  const [buffer, setBuffer] = useState("");
 
   const handleApplyClick = () => {
-    const form = inputForm.current;
-    setConfig(form["configInput"].value);
+    if (buffer.length > 0) {
+      const temp = RJSON.parse(buffer);
+      setConfig(temp);
+    } else {
+      return null;
+    }
+  };
+
+  const handleChange = (e) => {
+    setBuffer(e.target.value);
   };
 
   const renderFromConfig = () =>
-    config.items && typeof config.items !== "undefined" && config.length !== 0
-      ? config.items.map((item, i) =>
-          React.createElement("input", { type: item.type })
-        )
+    config.items &&
+    typeof config.items !== "undefined" &&
+    config.items.length !== 0
+      ? config.items.map((item, i) => (
+          <div>
+            <label>{item.label}</label>
+            {React.createElement("input", { type: item.type })}
+          </div>
+        ))
       : null;
 
   return (
     <div className="App" style={{ margin: "20px 50px" }}>
-      <form ref={inputForm}>
-        <input
-          type="textArea"
-          name="configInput"
-          style={{ width: "200px", height: "200px" }}
-          placeholder={JSON.stringify(inputPlaceholder)}
-        />
-      </form>
+      <input
+        type="textArea"
+        style={{ width: "200px", height: "200px" }}
+        placeholder={"config goes here"}
+        onChange={handleChange}
+      />
       <button onClick={handleApplyClick}>APPLY</button>
-      {renderFromConfig()}
+      <div>{renderFromConfig()}</div>
     </div>
   );
 }
