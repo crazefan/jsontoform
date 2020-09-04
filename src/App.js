@@ -43,8 +43,7 @@ function App() {
 
   return (
     <div className="App" style={{ margin: "20px 50px" }}>
-      <input
-        type="textArea"
+      <textarea
         style={{ width: "200px", height: "200px" }}
         placeholder={"config goes here"}
         onChange={handleChange}
