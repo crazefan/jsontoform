@@ -1,0 +1,8 @@
+{
+  "items": [
+    {
+      "label": "whatever",
+      "type": "checkbox"
+    }
+  ]
+}
