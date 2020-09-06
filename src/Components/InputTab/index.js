@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { TextField, Button, Box } from "@material-ui/core";
+import { TextField, Button, Box, Container } from "@material-ui/core";
 import { parseJSON } from "../../utils/parseJson";
 import ResultTab from "../ResultTab";
+import ErrorDialog from "../ErrorDialog";
 
 const handyString = {
   items: [
@@ -17,7 +18,7 @@ const handyString = {
 
 const InputTab = () => {
   const [config, setConfig] = useState({});
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   //intermediate buffer for storing input state
   const [buffer, setBuffer] = useState("");
 
@@ -26,8 +27,8 @@ const InputTab = () => {
   };
 
   const handleApplyClick = () => {
+    setConfig({});
     //async
-
     setTimeout(() => {
       if (buffer.length > 0) {
         const [error, parsedJSON] = parseJSON(buffer);
@@ -35,25 +36,47 @@ const InputTab = () => {
         if (!error && parsedJSON) {
           console.log(parsedJSON);
           setConfig(parsedJSON);
+        } else {
+          setDialogOpen(true);
         }
       }
     }, 0);
   };
-
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
   return (
-    <Box mx={2} my={2}>
-      <TextField
-        multiline
-        rows={12}
-        onChange={handleInputChange}
-        label="Input"
-        variant="outlined"
-      />
-      <Button onClick={handleApplyClick} mx={2} variant="contained">
-        Apply
-      </Button>
+    <Container>
+      <Box
+        width="500px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        mx="auto"
+        my={4}>
+        <TextField
+          multiline
+          rows={12}
+          onChange={handleInputChange}
+          label="Input"
+          variant="outlined"
+          fullWidth
+        />
+      </Box>
+      <Box
+        minwidth="500px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        mx="auto"
+        my={3}>
+        <Button onClick={handleApplyClick} variant="contained">
+          Apply
+        </Button>
+      </Box>
       <ResultTab config={config} />
-    </Box>
+      <ErrorDialog isOpen={dialogOpen} setClose={handleDialogClose} />
+    </Container>
   );
 };
 

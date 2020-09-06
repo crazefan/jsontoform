@@ -3,10 +3,6 @@ import RJSON from "relaxed-json";
 import InputTab from "./Components/InputTab";
 
 function App() {
-  return (
-    <>
-      <InputTab />
-    </>
-  );
+  return <InputTab />;
 }
 export default App;
