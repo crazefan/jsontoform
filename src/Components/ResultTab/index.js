@@ -1,5 +1,5 @@
 import React from "react";
-import { components } from "../../utils/componentsMap";
+import { components } from "../OutputComponents";
 
 const ResultTab = (props) => {
   const { config } = props;
