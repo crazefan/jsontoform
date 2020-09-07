@@ -28,6 +28,7 @@ const InputTab = ({ onConfigUpdate }) => {
 
   const handleApplyClick = () => {
     onConfigUpdate({});
+
     //async
     setTimeout(() => {
       if (buffer.length > 0) {
@@ -41,9 +42,11 @@ const InputTab = ({ onConfigUpdate }) => {
       }
     }, 0);
   };
+
   const handleDialogClose = () => {
     setDialogOpen(false);
   };
+
   return (
     <Container>
       <Box

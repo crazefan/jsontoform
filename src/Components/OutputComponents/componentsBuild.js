@@ -40,5 +40,5 @@ export const RadioComponent = (props) => {
 
 export const ButtonComponent = (props) => {
   const { label } = props;
-  return <Button>{label}</Button>;
+  return <Button variant="contained">{label}</Button>;
 };

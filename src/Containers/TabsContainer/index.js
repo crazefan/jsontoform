@@ -1,32 +1,11 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Box from "@material-ui/core/Box";
+import { Tab, Tabs } from "@material-ui/core/";
 import InputTab from "../../Components/InputTab";
 import ResultTab from "../../Components/ResultTab";
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      {...other}>
-      {value === index && <Box p={3}>{children}</Box>}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
+import TabPanel from "./TabPanel";
 
 export default function TabContainer() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const [config, setConfig] = useState({});
 
   const handleConfigChange = (newConfig) => {
