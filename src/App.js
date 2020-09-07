@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import RJSON from "relaxed-json";
-import InputTab from "./Components/InputTab";
+import React from "react";
+import TabsContainer from "./Containers/TabsContainer";
 
 function App() {
-  return <InputTab />;
+  return <TabsContainer />;
 }
 export default App;

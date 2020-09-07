@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Container } from "@material-ui/core";
 import { parseJSON } from "../../utils/parseJson";
-import ResultTab from "../ResultTab";
 import ErrorDialog from "../ErrorDialog";
 
 const handyString = {
@@ -16,9 +15,10 @@ const handyString = {
   ],
 };
 
-const InputTab = () => {
-  const [config, setConfig] = useState({});
+const InputTab = ({ onConfigUpdate }) => {
+  //handling error message status
   const [dialogOpen, setDialogOpen] = useState(false);
+
   //intermediate buffer for storing input state
   const [buffer, setBuffer] = useState("");
 
@@ -27,15 +27,14 @@ const InputTab = () => {
   };
 
   const handleApplyClick = () => {
-    setConfig({});
+    onConfigUpdate({});
     //async
     setTimeout(() => {
       if (buffer.length > 0) {
         const [error, parsedJSON] = parseJSON(buffer);
 
         if (!error && parsedJSON) {
-          console.log(parsedJSON);
-          setConfig(parsedJSON);
+          onConfigUpdate(parsedJSON);
         } else {
           setDialogOpen(true);
         }
@@ -74,7 +73,6 @@ const InputTab = () => {
           Apply
         </Button>
       </Box>
-      <ResultTab config={config} />
       <ErrorDialog isOpen={dialogOpen} setClose={handleDialogClose} />
     </Container>
   );
