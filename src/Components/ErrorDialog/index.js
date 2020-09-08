@@ -16,7 +16,7 @@ const ErrorDialog = ({ onClose, dialogConfig, ...props }) => (
     </DialogContent>
     <DialogActions>
       <Button onClick={onClose} color="primary" autoFocus>
-        Okay
+        OKAY
       </Button>
     </DialogActions>
   </Dialog>

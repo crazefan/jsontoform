@@ -1,20 +1,18 @@
-import RJSON, { parse } from "relaxed-json";
+import RJSON from "relaxed-json";
 
-import {
-  ButtonComponent,
-  CheckboxComponent,
-  DateComponent,
-  Numberfield,
-  RadioComponent,
-  TextArea,
-} from "../Components/OutputComponents/componentsBuild";
+import { TextAreaComponent } from "../Components/OutputComponents/TextAreaComponent";
+import { NumberfieldComponent } from "../Components/OutputComponents/NumberfieldComponent";
+import { CheckboxComponent } from "../Components/OutputComponents/CheckboxComponent";
+import { DateComponent } from "../Components/OutputComponents/DateComponent";
+import { RadioComponent } from "../Components/OutputComponents/RadioComponent";
+import { ButtonComponent } from "../Components/OutputComponents/ButtonComponent";
 
 import { TextField } from "@material-ui/core";
 
 export const components = {
   text: TextField,
-  textarea: TextArea,
-  number: Numberfield,
+  textarea: TextAreaComponent,
+  number: NumberfieldComponent,
   checkbox: CheckboxComponent,
   date: DateComponent,
   radio: RadioComponent,
@@ -29,6 +27,7 @@ export const parseJson = (input) => {
   try {
     const parsedJSON = RJSON.parse(input);
 
+    //making sure parsed json isn't a single line string or a number
     if (
       JSON.stringify(parsedJSON) === `"${input}"` ||
       typeof parsedJSON === "number"
@@ -47,3 +46,10 @@ export const isValidJson = (json) => {
 
   return !error && parsedJSON;
 };
+
+export const isValidArray = (config) =>
+  config &&
+  config.items &&
+  Array.isArray(config.items) &&
+  config.items.length > 0 &&
+  true;

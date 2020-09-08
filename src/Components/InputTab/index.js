@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Container } from "@material-ui/core";
+import { TextField, Button, Box } from "@material-ui/core";
 import { isObjectEmpty } from "../../utils";
 
 const handyString = {
   items: [
     { type: "number", label: "number" },
-    { type: "button", label: "DISCARD" },
-    { type: "button", label: "DISCARD" },
+    { type: "button", label: "OK" },
+    { type: "button", label: "CANCEL" },
     { type: "text", label: "text" },
     { type: "textarea", label: "textArea" },
     { type: "checkbox", label: "do you like pizza" },
     { type: "date", label: "your birthday date" },
     { type: "radio", label: "useless radio" },
-    { type: "button", label: "DISCARD" },
   ],
 };
 
@@ -29,38 +28,30 @@ const InputTab = ({ config, onConfigUpdate }) => {
   };
 
   return (
-    <Container>
+    <>
       <Box
+        my={4}
+        mx="auto"
         width="500px"
         display="flex"
-        alignItems="center"
         justifyContent="center"
-        mx="auto"
-        my={4}
       >
         <TextField
-          multiline
           rows={12}
-          onChange={handleInputChange}
-          label="Input"
-          value={isObjectEmpty(buffer) ? "" : buffer}
-          variant="outlined"
           fullWidth
+          multiline
+          label="Input"
+          variant="outlined"
+          onChange={handleInputChange}
+          value={isObjectEmpty(buffer) ? "" : buffer}
         />
       </Box>
-      <Box
-        minwidth="500px"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        mx="auto"
-        my={3}
-      >
+      <Box display="flex" justifyContent="center" my={3}>
         <Button onClick={handleApplyClick} variant="contained">
           Apply
         </Button>
       </Box>
-    </Container>
+    </>
   );
 };
 
