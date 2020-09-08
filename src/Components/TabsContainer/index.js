@@ -5,7 +5,7 @@ import ResultTab from "../ResultTab";
 import TabPanel from "../TabPanel";
 import { isValidJson, parseJson } from "../../utils";
 
-export default function TabContainer({ onInvalidJsonError }) {
+const TabContainer = ({ onInvalidJsonError }) => {
   const [config, setConfig] = useState({});
   const [currentTab, setCurrentTab] = useState(0);
   const [error, parsedJson] = parseJson(config);
@@ -47,4 +47,6 @@ export default function TabContainer({ onInvalidJsonError }) {
       )}
     </>
   );
-}
+};
+
+export default TabContainer;

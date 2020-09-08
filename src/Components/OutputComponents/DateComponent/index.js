@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-export const DateComponent = ({ label }) => (
+const DateComponent = ({ label }) => (
   <TextField
     label={label}
     type="date"
@@ -10,3 +10,5 @@ export const DateComponent = ({ label }) => (
     }}
   />
 );
+
+export default DateComponent;

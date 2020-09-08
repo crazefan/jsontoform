@@ -1,11 +1,11 @@
 import RJSON from "relaxed-json";
 
-import { TextAreaComponent } from "../Components/OutputComponents/TextAreaComponent";
-import { NumberfieldComponent } from "../Components/OutputComponents/NumberfieldComponent";
-import { CheckboxComponent } from "../Components/OutputComponents/CheckboxComponent";
-import { DateComponent } from "../Components/OutputComponents/DateComponent";
-import { RadioComponent } from "../Components/OutputComponents/RadioComponent";
-import { ButtonComponent } from "../Components/OutputComponents/ButtonComponent";
+import TextAreaComponent from "../Components/OutputComponents/TextAreaComponent";
+import NumberfieldComponent from "../Components/OutputComponents/NumberfieldComponent";
+import CheckboxComponent from "../Components/OutputComponents/CheckboxComponent";
+import DateComponent from "../Components/OutputComponents/DateComponent";
+import RadioComponent from "../Components/OutputComponents/RadioComponent";
+import ButtonComponent from "../Components/OutputComponents/ButtonComponent";
 
 import { TextField } from "@material-ui/core";
 
