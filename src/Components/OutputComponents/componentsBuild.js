@@ -35,7 +35,7 @@ export const DateComponent = (props) => {
 
 export const RadioComponent = (props) => {
   const { label } = props;
-  return <FormControlLabel value="female" control={<Radio />} label={label} />;
+  return <FormControlLabel control={<Radio />} label={label} />;
 };
 
 export const ButtonComponent = (props) => {
