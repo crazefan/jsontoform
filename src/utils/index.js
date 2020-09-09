@@ -23,8 +23,9 @@ export const isObjectEmpty = (object) =>
   Object.keys(object).length === 0 && object.constructor === Object;
 
 export const parseJson = (input) => {
-  //parsing input to JSON including 'relaxed' JSON format for ease-of-use
+  //parsing input to JSON including 'relaxed' JSON format for ease-of-use (RJSON library)
   //probably it would be better to restrict user to use only classic pure JSON, but I wanted at least some UX enhancement
+  //i think use of external library is somewhat justified
   try {
     const parsedJSON = RJSON.parse(input);
 
