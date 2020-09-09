@@ -22,12 +22,14 @@ export const components = {
 export const isObjectEmpty = (object) =>
   Object.keys(object).length === 0 && object.constructor === Object;
 
-// parsing input to JSON including 'relaxed' JSON format for ease-of-use
 export const parseJson = (input) => {
+  //parsing input to JSON including 'relaxed' JSON format for ease-of-use
+  //probably it would be better to restrict user to use only classic pure JSON, but I wanted at least some UX enhancement
   try {
     const parsedJSON = RJSON.parse(input);
 
     //making sure parsed json isn't a single line string or a number
+
     if (
       JSON.stringify(parsedJSON) === `"${input}"` ||
       typeof parsedJSON === "number"
