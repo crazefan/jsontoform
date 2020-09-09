@@ -12,7 +12,7 @@ const App = () => {
     setDialogConfig({
       title: "JSON input error",
       text:
-        "Looks like JSON you've entered is incorrect. Please check the input.",
+        "Looks like JSON you've entered is incorrect or invalid. Please check the input.",
     });
   };
 
