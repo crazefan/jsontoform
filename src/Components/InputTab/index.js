@@ -2,19 +2,6 @@ import React, { useState } from "react";
 import { TextField, Button, Box } from "@material-ui/core";
 import { isObjectEmpty } from "../../utils";
 
-const handyString = {
-  items: [
-    { type: "number", label: "number" },
-    { type: "button", label: "OK" },
-    { type: "button", label: "CANCEL" },
-    { type: "text", label: "text" },
-    { type: "textarea", label: "textArea" },
-    { type: "checkbox", label: "do you like pizza" },
-    { type: "date", label: "your birthday date" },
-    { type: "radio", label: "useless radio" },
-  ],
-};
-
 const InputTab = ({ config, onConfigUpdate }) => {
   //intermediate buffer for storing input state
   const [buffer, setBuffer] = useState(config);
